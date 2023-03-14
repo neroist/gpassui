@@ -2,7 +2,7 @@
 
 version       = "0.1.0"
 author        = "Jasmine"
-description   = "A new awesome nimble package"
+description   = "Desktop version of a website I made before using WebUI"
 license       = "MIT"
 bin           = @["gpassui"]
 
