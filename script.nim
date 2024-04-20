@@ -18,6 +18,15 @@ proc shannon(list: string): float =
 
   -result
 
+proc toIntStr*(num: float): string =
+  ## Chops off the trailing ".0" from floats.
+  ## If not present, then no work is done
+  ## (aside from converting `num` to a string)
+
+  result = $num
+
+  if result[^2..^1] == ".0": result = result[0..^3]
+
 proc adapt {.exportc.} = 
   let 
     password    = $document.getElementById("password").value
@@ -28,7 +37,7 @@ proc adapt {.exportc.} =
                                                    # total string entropy
 
   guesses.innerHTML = if password != "":
-      cstring fmt"...can be found within {round(pow(2, strEntropy))} guesses"
+      cstring fmt"...can be found within {round(pow(2, strEntropy)).toIntStr()} guesses"
     else:
       cstring "...can be found within 0 guesses"
 
